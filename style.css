@@ -1,0 +1,149 @@
+/* css for signin page */
+  body {
+    background-image: url("https://wallpapers.com/images/hd/aesthetic-white-dead-tree-emlgoj12mgm7nu9w.jpg");
+    background-color: #f1f1f1;
+    background-size: cover; /* Cover the entire container */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    color: white; /* Ensure text is visible against the background */
+    text-align: center; /* Center text */
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem; /* Space between input groups */
+}
+
+.input-group label {
+  margin-right: 10px; /* Space between label and checkbox */
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.input-group input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+/* Optional: Additional styling for a better look */
+.input-group input[type="checkbox"] {
+  accent-color: #007bff; /* Change the color of the checkbox */
+}
+
+.input-group label:hover {
+  color: #007bff; /* Change the label color on hover */
+}
+
+
+.container {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  margin-top: 200px;
+  border-radius: 5px;
+  padding: 20px 30px;
+  width: 400px;
+}
+
+.container1 {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    margin-top: 150px;
+    border-radius: 5px;
+    padding: 20px 30px;
+    width: 400px;
+  }
+
+h1 {
+  font-size: 1.5em;
+  text-align: center;
+}
+
+label {
+  font-size: 1.2em;
+}
+
+input {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 1em;
+  margin-top: 10px;
+  padding: 10px;
+  width: 100%;
+}
+
+input[type='submit'] {
+  background-color: #00728f;
+  border: 1px solid #00728f;
+  border-radius: 3px;
+  color: #ffffff;
+  font-size: 1.2em;
+  margin-top: 20px;
+  padding: 10px;
+  width: 100%;
+}
+
+input[type='submit']:hover {
+  background-color: #005f6b;
+}
+
+.error {
+  background-color: #f0f0f0;
+  border: 1px solid #b9b9b9;
+  border-left: 3px solid #b9b9b9;
+  color: #666;
+  font-size: 0.9em;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.error p {
+  margin: 0;
+}
+
+.success {
+  background-color: #f0f0f0;
+  border: 1px solid #b9b9b9;
+  border-left: 3px solid #b9b9b9;
+  color: #666;
+  font-size: 0.9em;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.success p {
+  margin: 0;
+}
+
+/* Input group styles */
+.input-group {
+  margin-bottom: 15px; /* Space between input groups */
+}
+
+h2 {
+  text-align: center;
+}
+
+/* Button styles */
+.btn {
+  width: 100%; /* Full width button */
+  padding: 10px; /* Padding inside the button */
+  background-color: #007bff; /* Button background color */
+  color: white; /* Button text color */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 16px; /* Button text size */
+}
+
+.btn:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}

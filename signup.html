@@ -1,0 +1,144 @@
+<!-- html page for signin -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sign Up</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <div class="container1">
+      <div class="header">
+        <h2>Sign Up</h2>
+      </div>
+
+      <form method="post">
+        <div class="input-group">
+          <label>Name</label>
+          <input type="text" name="name" required />
+        </div>
+        <div class="input-group">
+          <label>Email</label>
+
+          <input type="email" name="email" required />
+        </div>
+        <div class="input-group">
+          <label>Phone no</label>
+          <input type="number" name="phoneNumber" required />
+        </div>
+
+        <div class="input-group">
+          <label>Address</label>
+          <input type="text" name="Address" required />
+        </div>
+
+        <div class="input-group">
+          <label>Password</label>
+          <input type="password" name="password" required />
+        </div>
+        <div class="input-group">
+          <label>Confirm Password</label>
+          <input type="password" name="ConfirmPassword" required />
+        </div>
+        <!-- checkbox to check if you are an distributer -->
+        <div class="input-group">
+          <label>Are you a Distributer?</label>
+          <input type="checkbox" name="distributer" />
+        </div>
+        <div class="input-group">
+          <button type="submit" class="btn" name="signin">Sign Up</button>
+        </div>
+        <p> Already a member? <a href="signin.html">Sign In</a> </p>
+      </form>
+    </div>
+  </body>
+  <script>
+    document.querySelector('form').addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = document.querySelector('input[name="name"]').value;
+      const email = document.querySelector('input[name="email"]').value;
+      const phoneNumber = document.querySelector(
+        'input[name="phoneNumber"]'
+      ).value;
+      const address = document.querySelector('input[name="Address"]').value;
+      const password = document.querySelector('input[name="password"]').value;
+      const isDistributer = document.querySelector(
+        'input[name="distributer"]'
+      ).checked;
+      const confirmPassword = document.querySelector(
+        'input[name="ConfirmPassword"]'
+      ).value;
+
+      if (password !== confirmPassword) {
+        alert('Password and Confirm Password do not match');
+        return;
+      }
+      if (isDistributer) {
+        fetch('http://localhost:5500/dsignup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            phoneNumber,
+            address,
+            password,
+          }),
+        })
+          .then((res) => {
+            if (!res.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return res.json();
+          })
+          .then((data) => {
+            if (data.error) {
+              alert(data.error);
+            } else {
+              alert('Sign Up successful');
+              window.location.href = 'signin.html';
+            }
+          })
+          .catch((error) => {
+            console.error('Error during fetch:', error);
+            alert('An error occurred. Please try again later.');
+          });
+      } else {
+        fetch('http://localhost:5500/signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            phoneNumber,
+            address,
+            password,
+          }),
+        })
+          .then((res) => {
+            if (!res.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return res.json();
+          })
+          .then((data) => {
+            if (data.error) {
+              alert(data.error);
+            } else {
+              alert('Sign Up successful');
+              window.location.href = 'signin.html';
+            }
+          })
+          .catch((error) => {
+            console.error('Error during fetch:', error);
+            alert('An error occurred. Please try again later.');
+          });
+      }
+    });
+  </script>
+</html>

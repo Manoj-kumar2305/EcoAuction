@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Data Chart</title>
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Include chartjs-adapter-date-fns library -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        canvas {
+            max-width: 90%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="liveChart"></canvas>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const ctx = document.getElementById('liveChart').getContext('2d');
+            const liveChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: [new Date('2024-06-09T12:00:00'),
+                        new Date('2024-06-09T12:05:00'),
+                        new Date('2024-06-09T12:10:00'),
+                        new Date('2024-06-09T12:15:00'),
+                        new Date('2024-06-09T12:20:00'),], // Date labels
+                    datasets: [{
+                        label: 'Price',
+                        data: [ 10, 20, 15, 25, 30 ], // Price data
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        fill: false,
+                        tension: 0.1 // Smooth the line
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: {
+                                unit: 'minute',
+                                tooltipFormat: 'Pp',
+                            },
+                            title: {
+                                display: true,
+                                text: 'Date'
+                            },
+                            ticks: {
+                                autoSkip: true,
+                                maxTicksLimit: 20
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Price'
+                            },
+                            beginAtZero: true
+                        }
+                    },
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top'
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false
+                        }
+                    },
+                    interaction: {
+                        mode: 'nearest',
+                        axis: 'x',
+                        intersect: false
+                    }
+                }
+            });
+
+            // Function to add data to the chart
+            function addData(chart, label, data) {
+                chart.data.labels.push(label);
+                chart.data.datasets.forEach((dataset) => {
+                    dataset.data.push(data);
+                });
+                chart.update();
+            }
+
+            // Simulate live data update
+            setInterval(() => {
+                const now = new Date();
+                const price = Math.random() * 100; // Replace with your data fetching logic
+                addData(liveChart, now, price);
+            }, 5000); // Update every 5 seconds
+        });
+    </script>
+</body>
+</html>

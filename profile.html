@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="profile.css" />
+  </head>
+  <body>
+    <header>
+      <div class="nav">
+        <div class="left">
+          <img src="./demo.png" width="75" alt="logo" />
+        </div>
+        <div class="right">
+          <a href="./landingpage2.html"><button class="home">Home</button></a>
+          <a href="./signin.html"><button class="signout">Signout</button></a>
+        </div>
+      </div>
+    </header>
+    <div class="mid">
+      <div class="profile">
+        <div class="profile-info">
+          <div class="info" id="name"><span>Name:</span><h2>username</h2></div>
+          <div class="info" id="phone"
+            ><span>Mobile No:</span><p>phoneNumber</p></div
+          >
+          <div class="info" id="address"
+            ><span>Address:</span><p>address</p></div
+          >
+          <div class="info" id="email"><span>Email:</span><p>useremail</p></div>
+        </div>
+      </div>
+      <div class="balance">
+        <div class="balance-info">
+          <div class="balance-amount"><h2>Balance:</h2></div>
+          <div class="amount"><p id="bal">0$</p></div>
+        </div>
+        <div class="checkout">
+          <button class="check">checkout</button>
+        </div>
+      </div>
+    </div>
+    <h1 id="hist">History</h1>
+    <div class="history"><span>No history present Yet</span></div>
+  </body>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      async function getUserDetails() {
+        try {
+          const response = await fetch('http://localhost:5500/users', {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          });
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+
+          const contentType = response.headers.get('content-type');
+          if (!contentType || !contentType.includes('application/json')) {
+            throw new Error('Invalid response format. Expected JSON.');
+          }
+
+          const data = await response.json();
+          alert(data);
+          if (data.success) {
+            document.getElementById(
+              'name'
+            ).innerHTML = `<span>Name:</span><h2>${data.user.name}</h2>`;
+            document.getElementById(
+              'phone'
+            ).innerHTML = `<span>Mobile No:</span><p>${data.user.phone}</p>`;
+            document.getElementById(
+              'address'
+            ).innerHTML = `<span>Address:</span><p>${data.user.address}</p>`;
+            document.getElementById(
+              'email'
+            ).innerHTML = `<span>Email:</span><p>${data.user.email}</p>`;
+            document.getElementById('bal').innerHTML = `${data.user.balance}$`;
+          } else {
+            alert('Login failed');
+          }
+        } catch (error) {
+          console.error('Error:', error);
+          alert('An error occurred while fetching user details.');
+        }
+      }
+      getUserDetails();
+    });
+  </script>
+</html>

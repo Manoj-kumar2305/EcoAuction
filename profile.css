@@ -1,0 +1,160 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 30px;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+}
+
+#hist {
+  font-family: 'Arial', sans-serif; /* Font family for the heading */
+  font-size: 24px; /* Font size for the heading */
+  color: #333; /* Text color for the heading */
+  text-align: center; /* Center align the heading */
+  margin-top: 20px; /* Margin above the heading */
+  margin-bottom: 10px; /* Margin below the heading */
+}
+
+.history {
+  background-color: #f9f9f9; /* Light gray background */
+  border: 1px solid #ddd; /* Light border */
+  padding: 20px; /* Padding inside the box */
+  border-radius: 5px; /* Rounded corners */
+  margin: 20px 0; /* Space above and below */
+  text-align: center; /* Center the text */
+  font-family: Arial, sans-serif; /* Font family */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.history span {
+  color: #555; /* Darker text color */
+  font-size: 16px; /* Text size */
+  font-weight: bold; /* Bold text */
+}
+
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.right {
+  margin-top: 20px;
+  margin-right: 40px;
+  gap: 10px;
+}
+
+.home {
+  padding: 8px 18px;
+  border-radius: 10px;
+  border: 2px solid green;
+  background-color: white;
+  margin-right: 10px;
+  color: green;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.home:hover {
+  background-color: green;
+  color: white;
+}
+
+.signout {
+  padding: 8px 18px;
+  border-radius: 10px;
+  font-size: 20px;
+  background-color: green;
+  color: white;
+  border: 1px solid green;
+  cursor: pointer;
+}
+
+.signout:hover {
+  background-color: white;
+  color: green;
+}
+.mid {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: #0056b3 2px solid;
+  margin-top: 5px;
+  border-radius: 10px;
+  padding: 10px;
+  width: 80%;
+  margin-left: 10%;
+}
+
+.profile {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.profile-info {
+  margin-left: 10px; /* adjust spacing as needed */
+}
+
+.balance {
+  display: flex;
+  flex-direction: column;
+  margin-right: 80px;
+  padding-left: 30px;
+}
+
+.balance-info {
+  padding: 5px;
+  display: flex;
+  justify-content: space-between; /* adjust spacing as needed */
+}
+
+.add-balance button {
+  background-color: #007bff; /* blue color */
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-balance button:hover {
+  background-color: #0056b3; /* darker blue on hover */
+}
+
+/* Styles for headings and paragraphs */
+h2 {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 45px;
+}
+
+
+.history {
+  background-color: #f9f9f9; /* Light gray background */
+  border: 1px solid #ddd; /* Light border */
+  padding: 20px; /* Padding inside the box */
+  border-radius: 5px; /* Rounded corners */
+  margin: 20px 0; /* Space above and below */
+  text-align: center; /* Center the text */
+  font-family: Arial, sans-serif; /* Font family */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.history span {
+  color: #555; /* Darker text color */
+  font-size: 16px; /* Text size */
+  font-weight: bold; /* Bold text */
+}

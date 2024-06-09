@@ -1,0 +1,67 @@
+<!-- html page for signin -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sign In</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h2>Sign In</h2>
+      </div>
+
+      <form id="loginbox">
+        <div class="input-group">
+          <label>Email</label>
+          <input type="email" name="email" id="email" required />
+        </div>
+        <div class="input-group">
+          <label>Password</label>
+          <input type="password" name="password" id="password" required />
+        </div>
+        <div class="input-group">
+          <button type="submit" class="btn" name="signin">Sign In</button>
+        </div>
+        <p> Not yet a member? <a href="signup.html">Sign Up</a> </p>
+      </form>
+    </div>
+  </body>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('loginbox');
+
+      form.addEventListener('submit', async function (event) {
+        event.preventDefault();
+
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        try {
+          const response = await fetch('http://localhost:5500/users', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, password }),
+          });
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          console.log(response);
+          const data = await response.json();
+          console.log(data);
+          if (data.success) {
+            window.location.href = './landingpage2.html';
+          } else {
+            alert('Login failed');
+          }
+        } catch (error) {
+          console.error('Error:', error);
+          alert('An error occurred. Please try again later.');
+        }
+      });
+    });
+  </script>
+</html>
